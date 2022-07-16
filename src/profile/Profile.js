@@ -1,25 +1,34 @@
 import React from 'react'
 import img from '../profile/img.jpg'
 import PropTypes from "prop-types";
-import { propTypes } from 'react-bootstrap/esm/Image';
+
 
  const Profile = props => {
   return (
     <div> 
-    <div> <span> {props.fullname}</span> </div>
-    <div> <span> {props.bio}</span> </div>
-     <div> <span> {props.profession}</span> </div>
- <div>   
+     <div>   
 <div className="myImage">
-<img src={img} alt=''  />
+<img  src={img} alt='' style={{  borderRadius: "10%" ,   width: "60%"}}  />
 </div>
 {props.children}
-</div>  
-    <button onClick={()=>{ props.handleName(`HELLO  ${props.fullname}`)}}>click me</button> 
+</div> 
+<div>
+    <button onClick={()=>{ props.handleName(` 
+            FULLNAME : ${ props.fullname} 
+            BIO : ${props.bio}
+            PROFESSION : ${props.profession}
+      `)}}  style={{backgroundColor:"aqua", borderColor:"blue" , borderRadius:7,marginTop:20}}> 
+   
+     ABOUT ME</button> 
+     </div>
+
     </div>
   )
 }
-Profile.defaultProps={fullname:'none', bio:'wrong', profession:'notfound' }
-Profile.prototype={fullname,profession,bio:PropTypes.string , children:propTypes.}
+Profile.defaultProps={fullname:'none', bio:'wrong', profession:'notfound' };
+Profile.protoTypes={fullname: PropTypes.string.isREquired ,
+  bio: PropTypes.string.isREquired ,
+  profession: PropTypes.string.isREquired
+};
 export default Profile;
 
